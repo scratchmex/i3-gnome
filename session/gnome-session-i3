@@ -1,7 +1,5 @@
 #! /bin/sh
-gnome-session --help 2>/dev/null | grep -- --builtin > /dev/null
-HASBUILTIN=$?
-if [ $HASBUILTIN -eq 0 ]; then
+if [ $(gnome-session --help 2>/dev/null | grep -c -- '--builtin') -ne 0 ]; then
     BUILTINARG="--builtin"
 else
     BUILTINARG=""
